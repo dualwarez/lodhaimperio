@@ -1,140 +1,108 @@
-
 import { Phone, MessageCircle, FileText, Building, CreditCard, Truck, Shield, Award, Users, Star, CheckCircle, Mail, MapPin, Calendar, ExternalLink, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { useState } from "react";
-
 const Index = () => {
   const [selectedService, setSelectedService] = useState<string | null>(null);
-
-  const services = [
-    { 
-      icon: FileText, 
-      title: "Income Tax Return", 
-      description: "Professional ITR filing for individuals and businesses",
-      details: "Our expert team helps you file your Income Tax Returns accurately and on time. We handle all types of ITR forms including ITR-1, ITR-2, ITR-3, ITR-4, and more. We ensure maximum refunds and compliance with latest tax laws.",
-      whatsappText: "I need to discuss about Income Tax Return"
-    },
-    { 
-      icon: Building, 
-      title: "GST Registration & Filing", 
-      description: "Complete GST solutions and compliance",
-      details: "We provide end-to-end GST services including registration, monthly/quarterly returns filing, GST reconciliation, and compliance management. Our team ensures timely filing and helps you avoid penalties.",
-      whatsappText: "I need to discuss about GST Registration & Filing"
-    },
-    { 
-      icon: Award, 
-      title: "Company Registration", 
-      description: "Private Limited, LLP, and Partnership registration",
-      details: "We assist in registering your business as Private Limited Company, LLP, Partnership, or Proprietorship. Our services include name approval, documentation, ROC filing, and obtaining all necessary certificates.",
-      whatsappText: "I need to discuss about Company Registration"
-    },
-    { 
-      icon: CreditCard, 
-      title: "MSME Loans", 
-      description: "Quick and hassle-free MSME loan assistance",
-      details: "Get financial support for your small business through MSME loans. We help you with loan application, documentation, and liaise with banks and financial institutions for quick approval.",
-      whatsappText: "I need to discuss about MSME Loans"
-    },
-    { 
-      icon: FileText, 
-      title: "TDS Work", 
-      description: "TDS return filing and compliance services",
-      details: "Complete TDS compliance including TDS deduction, monthly TDS returns filing, TDS certificates generation, and annual TDS statements. We ensure accurate TDS calculations and timely compliance.",
-      whatsappText: "I need to discuss about TDS Work"
-    },
-    { 
-      icon: Truck, 
-      title: "E-Way Bill Assistance", 
-      description: "E-way bill generation and management",
-      details: "Streamline your goods transportation with our E-Way Bill services. We help generate, modify, and cancel e-way bills as per GST regulations, ensuring smooth movement of goods.",
-      whatsappText: "I need to discuss about E-Way Bill Assistance"
-    },
-    { 
-      icon: Shield, 
-      title: "Digital Signature Services", 
-      description: "DSC for income tax, GST, and MCA filings",
-      details: "Get Class 2 and Class 3 Digital Signature Certificates for various government filings. We provide DSC for Income Tax, GST, MCA, and other regulatory compliance requirements.",
-      whatsappText: "I need to discuss about Digital Signature Services"
-    },
-    { 
-      icon: Building, 
-      title: "Trade License Assistance", 
-      description: "Trade license registration and renewal",
-      details: "Obtain trade licenses for your business operations. We assist with application preparation, documentation, and follow-up with local authorities for quick license approval and renewal.",
-      whatsappText: "I need to discuss about Trade License Assistance"
-    },
-    { 
-      icon: FileText, 
-      title: "Import Export Code (IEC)", 
-      description: "IEC registration for import/export business",
-      details: "Start your import-export business with IEC registration. We handle the complete process including application filing, documentation, and obtaining the 10-digit IEC number from DGFT.",
-      whatsappText: "I need to discuss about Import Export Code (IEC)"
-    },
-    { 
-      icon: CreditCard, 
-      title: "PAN Card Services", 
-      description: "New PAN application and corrections",
-      details: "Get new PAN cards, corrections in existing PAN, duplicate PAN cards, and PAN linking services. We ensure quick processing and delivery of PAN cards with accurate information.",
-      whatsappText: "I need to discuss about PAN Card Services"
-    },
-    { 
-      icon: Users, 
-      title: "Labour License", 
-      description: "Labour license registration and compliance",
-      details: "Obtain necessary labor licenses for your business including Contract Labour License, Shops & Establishment License, and Factory License. We ensure full compliance with labor laws.",
-      whatsappText: "I need to discuss about Labour License"
-    },
-    { 
-      icon: Award, 
-      title: "Trademark Services", 
-      description: "Trademark registration and protection",
-      details: "Protect your brand with trademark registration. Our services include trademark search, application filing, response to objections, and renewal services to safeguard your intellectual property.",
-      whatsappText: "I need to discuss about Trademark Services"
-    }
-  ];
-
-  const testimonials = [
-    {
-      name: "Rajesh Sharma",
-      text: "Jiya Siya Associates has been handling our company's GST and income tax for 3 years. Very professional and timely service!",
-      rating: 5
-    },
-    {
-      name: "Priya Patel",
-      text: "Got my ITR filed within 2 days. Excellent service and very reasonable charges. Highly recommended!",
-      rating: 5
-    },
-    {
-      name: "Amit Industries",
-      text: "Thanks to the team for helping us with company registration and MSME loan. Great support throughout!",
-      rating: 5
-    }
-  ];
-
+  const services = [{
+    icon: FileText,
+    title: "Income Tax Return",
+    description: "Professional ITR filing for individuals and businesses",
+    details: "Our expert team helps you file your Income Tax Returns accurately and on time. We handle all types of ITR forms including ITR-1, ITR-2, ITR-3, ITR-4, and more. We ensure maximum refunds and compliance with latest tax laws.",
+    whatsappText: "I need to discuss about Income Tax Return"
+  }, {
+    icon: Building,
+    title: "GST Registration & Filing",
+    description: "Complete GST solutions and compliance",
+    details: "We provide end-to-end GST services including registration, monthly/quarterly returns filing, GST reconciliation, and compliance management. Our team ensures timely filing and helps you avoid penalties.",
+    whatsappText: "I need to discuss about GST Registration & Filing"
+  }, {
+    icon: Award,
+    title: "Company Registration",
+    description: "Private Limited, LLP, and Partnership registration",
+    details: "We assist in registering your business as Private Limited Company, LLP, Partnership, or Proprietorship. Our services include name approval, documentation, ROC filing, and obtaining all necessary certificates.",
+    whatsappText: "I need to discuss about Company Registration"
+  }, {
+    icon: CreditCard,
+    title: "MSME Loans",
+    description: "Quick and hassle-free MSME loan assistance",
+    details: "Get financial support for your small business through MSME loans. We help you with loan application, documentation, and liaise with banks and financial institutions for quick approval.",
+    whatsappText: "I need to discuss about MSME Loans"
+  }, {
+    icon: FileText,
+    title: "TDS Work",
+    description: "TDS return filing and compliance services",
+    details: "Complete TDS compliance including TDS deduction, monthly TDS returns filing, TDS certificates generation, and annual TDS statements. We ensure accurate TDS calculations and timely compliance.",
+    whatsappText: "I need to discuss about TDS Work"
+  }, {
+    icon: Truck,
+    title: "E-Way Bill Assistance",
+    description: "E-way bill generation and management",
+    details: "Streamline your goods transportation with our E-Way Bill services. We help generate, modify, and cancel e-way bills as per GST regulations, ensuring smooth movement of goods.",
+    whatsappText: "I need to discuss about E-Way Bill Assistance"
+  }, {
+    icon: Shield,
+    title: "Digital Signature Services",
+    description: "DSC for income tax, GST, and MCA filings",
+    details: "Get Class 2 and Class 3 Digital Signature Certificates for various government filings. We provide DSC for Income Tax, GST, MCA, and other regulatory compliance requirements.",
+    whatsappText: "I need to discuss about Digital Signature Services"
+  }, {
+    icon: Building,
+    title: "Trade License Assistance",
+    description: "Trade license registration and renewal",
+    details: "Obtain trade licenses for your business operations. We assist with application preparation, documentation, and follow-up with local authorities for quick license approval and renewal.",
+    whatsappText: "I need to discuss about Trade License Assistance"
+  }, {
+    icon: FileText,
+    title: "Import Export Code (IEC)",
+    description: "IEC registration for import/export business",
+    details: "Start your import-export business with IEC registration. We handle the complete process including application filing, documentation, and obtaining the 10-digit IEC number from DGFT.",
+    whatsappText: "I need to discuss about Import Export Code (IEC)"
+  }, {
+    icon: CreditCard,
+    title: "PAN Card Services",
+    description: "New PAN application and corrections",
+    details: "Get new PAN cards, corrections in existing PAN, duplicate PAN cards, and PAN linking services. We ensure quick processing and delivery of PAN cards with accurate information.",
+    whatsappText: "I need to discuss about PAN Card Services"
+  }, {
+    icon: Users,
+    title: "Labour License",
+    description: "Labour license registration and compliance",
+    details: "Obtain necessary labor licenses for your business including Contract Labour License, Shops & Establishment License, and Factory License. We ensure full compliance with labor laws.",
+    whatsappText: "I need to discuss about Labour License"
+  }, {
+    icon: Award,
+    title: "Trademark Services",
+    description: "Trademark registration and protection",
+    details: "Protect your brand with trademark registration. Our services include trademark search, application filing, response to objections, and renewal services to safeguard your intellectual property.",
+    whatsappText: "I need to discuss about Trademark Services"
+  }];
+  const testimonials = [{
+    name: "Rajesh Sharma",
+    text: "Jiya Siya Associates has been handling our company's GST and income tax for 3 years. Very professional and timely service!",
+    rating: 5
+  }, {
+    name: "Priya Patel",
+    text: "Got my ITR filed within 2 days. Excellent service and very reasonable charges. Highly recommended!",
+    rating: 5
+  }, {
+    name: "Amit Industries",
+    text: "Thanks to the team for helping us with company registration and MSME loan. Great support throughout!",
+    rating: 5
+  }];
   const handleEnquireNow = (whatsappText: string) => {
     const phoneNumber = "917208241591";
     const message = encodeURIComponent(whatsappText);
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
   };
-
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       {/* Fixed CTA Buttons */}
       <div className="fixed bottom-4 right-4 z-50 flex flex-col gap-2">
-        <a
-          href="https://wa.me/917208241591"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
-        >
+        <a href="https://wa.me/917208241591" target="_blank" rel="noopener noreferrer" className="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110">
           <MessageCircle className="h-6 w-6" />
         </a>
-        <a
-          href="tel:+917208241591"
-          className="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
-        >
+        <a href="tel:+917208241591" className="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110">
           <Phone className="h-6 w-6" />
         </a>
       </div>
@@ -145,11 +113,7 @@ const Index = () => {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <div className="w-12 h-12 rounded-lg overflow-hidden">
-                <img 
-                  src="/lovable-uploads/e5056410-8de6-4fa4-88d2-1ebce0a23f54.png" 
-                  alt="Jiya Siya Associates Logo" 
-                  className="w-full h-full object-contain"
-                />
+                <img src="/lovable-uploads/e5056410-8de6-4fa4-88d2-1ebce0a23f54.png" alt="Jiya Siya Associates Logo" className="w-full h-full object-contain" />
               </div>
               <div>
                 <h1 className="text-xl font-bold text-blue-900">Jiya Siya Associates</h1>
@@ -178,19 +142,11 @@ const Index = () => {
               Get assistance with Income Tax, GST, Registration, and More!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in">
-              <a
-                href="https://wa.me/917208241591"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg"
-              >
+              <a href="https://wa.me/917208241591" target="_blank" rel="noopener noreferrer" className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg">
                 <MessageCircle className="inline-block mr-2 h-5 w-5" />
                 Message on WhatsApp
               </a>
-              <a
-                href="tel:+917208241591"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg"
-              >
+              <a href="tel:+917208241591" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg">
                 <Phone className="inline-block mr-2 h-5 w-5" />
                 Call Now
               </a>
@@ -209,8 +165,7 @@ const Index = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service, index) => (
-              <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:scale-105 border-l-4 border-l-blue-600">
+            {services.map((service, index) => <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:scale-105 border-l-4 border-l-blue-600">
                 <CardContent className="p-6">
                   <div className="flex items-center mb-4">
                     <div className="bg-blue-100 p-3 rounded-lg mr-4">
@@ -221,10 +176,7 @@ const Index = () => {
                   <p className="text-muted-foreground mb-4">{service.description}</p>
                   <Dialog>
                     <DialogTrigger asChild>
-                      <Button 
-                        variant="outline" 
-                        className="w-full border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white"
-                      >
+                      <Button variant="outline" className="w-full border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white">
                         Learn More
                       </Button>
                     </DialogTrigger>
@@ -234,10 +186,7 @@ const Index = () => {
                       </DialogHeader>
                       <div className="space-y-4">
                         <p className="text-muted-foreground">{service.details}</p>
-                        <Button 
-                          onClick={() => handleEnquireNow(service.whatsappText)}
-                          className="w-full bg-green-500 hover:bg-green-600 text-white"
-                        >
+                        <Button onClick={() => handleEnquireNow(service.whatsappText)} className="w-full bg-green-500 hover:bg-green-600 text-white">
                           <MessageCircle className="mr-2 h-4 w-4" />
                           Enquire Now
                         </Button>
@@ -245,8 +194,7 @@ const Index = () => {
                     </DialogContent>
                   </Dialog>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </section>
@@ -258,9 +206,7 @@ const Index = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-8">About Jiya Siya Associates</h2>
             <div className="bg-white rounded-lg shadow-lg p-8">
               <div className="mb-6">
-                <div className="w-32 h-32 bg-blue-600 rounded-full mx-auto mb-6 flex items-center justify-center">
-                  <Users className="h-16 w-16 text-white" />
-                </div>
+                
                 <h3 className="text-2xl font-bold text-blue-900 mb-4">15 Years of Excellence</h3>
               </div>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
@@ -305,19 +251,15 @@ const Index = () => {
             <p className="text-xl text-muted-foreground">Don't just take our word for it</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {testimonials.map((testimonial, index) => (
-              <Card key={index} className="hover:shadow-lg transition-all duration-300">
+            {testimonials.map((testimonial, index) => <Card key={index} className="hover:shadow-lg transition-all duration-300">
                 <CardContent className="p-6">
                   <div className="flex mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                    ))}
+                    {[...Array(testimonial.rating)].map((_, i) => <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />)}
                   </div>
                   <p className="text-muted-foreground mb-4 italic">"{testimonial.text}"</p>
                   <p className="font-semibold text-blue-900">- {testimonial.name}</p>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </section>
@@ -328,19 +270,11 @@ const Index = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Have Questions? Let's Connect!</h2>
           <p className="text-xl mb-8 opacity-90">Get in touch today for expert tax and finance solutions</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="tel:+917208241591"
-              className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg"
-            >
+            <a href="tel:+917208241591" className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg">
               <Phone className="inline-block mr-2 h-5 w-5" />
               Call Now
             </a>
-            <a
-              href="https://wa.me/917208241591"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg"
-            >
+            <a href="https://wa.me/917208241591" target="_blank" rel="noopener noreferrer" className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg">
               <MessageCircle className="inline-block mr-2 h-5 w-5" />
               Message on WhatsApp
             </a>
@@ -365,12 +299,7 @@ const Index = () => {
                 </div>
                 <div className="flex items-center">
                   <MapPin className="h-5 w-5 mr-3 text-green-400" />
-                  <a 
-                    href="https://maps.app.goo.gl/1tJC7A7EHH5MoWq78"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-green-400 transition-colors flex items-center"
-                  >
+                  <a href="https://maps.app.goo.gl/1tJC7A7EHH5MoWq78" target="_blank" rel="noopener noreferrer" className="hover:text-green-400 transition-colors flex items-center">
                     <span className="mr-2">View Location</span>
                     <ExternalLink className="h-4 w-4" />
                   </a>
@@ -400,8 +329,6 @@ const Index = () => {
           </div>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
