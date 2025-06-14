@@ -1,3 +1,4 @@
+
 import { Phone, MessageCircle, FileText, Building, CreditCard, Truck, Shield, Award, Users, Star, CheckCircle, Mail, MapPin, Calendar, ExternalLink, X, IndianRupee, Factory, Briefcase, Landmark } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -151,8 +152,18 @@ const Index = () => {
       </header>
 
       {/* Hero Section */}
-      <section id="home" className="bg-gradient-to-br from-blue-50 to-green-50 py-20">
-        <div className="container mx-auto px-4 text-center">
+      <section 
+        id="home" 
+        className="relative py-20 bg-gradient-to-br from-blue-50 to-green-50 overflow-hidden"
+        style={{
+          backgroundImage: `linear-gradient(rgba(59, 130, 246, 0.1), rgba(34, 197, 94, 0.1)), url('https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
+        <div className="absolute inset-0 bg-white/80 backdrop-blur-sm"></div>
+        <div className="container mx-auto px-4 text-center relative z-10">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-6xl font-bold text-blue-900 mb-6 animate-fade-in">
               Expert Tax & Finance Solutions for Individuals & Businesses
@@ -221,13 +232,21 @@ const Index = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
+      <section 
+        id="about" 
+        className="py-20 relative overflow-hidden"
+        style={{
+          backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), url('https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-8">About Jiya Siya Associates</h2>
-            <div className="bg-white rounded-lg shadow-lg p-8">
+            <div className="bg-white/90 backdrop-blur-sm rounded-lg shadow-lg p-8">
               <div className="mb-6">
-                
                 <h3 className="text-2xl font-bold text-blue-900 mb-4">15 Years of Excellence</h3>
               </div>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
@@ -288,10 +307,18 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-green-600 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Have Questions? Let's Connect!</h2>
-          <p className="text-xl mb-8 opacity-90">Get in touch today for expert tax and finance solutions</p>
+      <section 
+        className="py-20 relative overflow-hidden"
+        style={{
+          backgroundImage: `linear-gradient(rgba(37, 99, 235, 0.9), rgba(34, 197, 94, 0.9)), url('https://images.unsplash.com/photo-1483058712412-4245e9b90334?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Have Questions? Let's Connect!</h2>
+          <p className="text-xl mb-8 opacity-90 text-white">Get in touch today for expert tax and finance solutions</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="tel:+917208241591" className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg">
               <Phone className="inline-block mr-2 h-5 w-5" />
