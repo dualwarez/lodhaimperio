@@ -1,5 +1,4 @@
-
-import { Phone, MessageCircle, FileText, Building, CreditCard, Truck, Shield, Award, Users, Star, CheckCircle, Mail, MapPin, Calendar, ExternalLink, X, IndianRupee, Factory, Briefcase, Landmark } from "lucide-react";
+import { Phone, MessageCircle, FileText, Building, CreditCard, Truck, Shield, Award, Users, Star, CheckCircle, Mail, MapPin, Calendar, ExternalLink, X, IndianRupee, Factory, Briefcase, Landmark, Download, Image } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
@@ -7,6 +6,7 @@ import { useState } from "react";
 
 const Index = () => {
   const [selectedService, setSelectedService] = useState<string | null>(null);
+  const [showAdsDialog, setShowAdsDialog] = useState(false);
 
   const services = [
     {
@@ -113,6 +113,126 @@ const Index = () => {
     const phoneNumber = "917208241591";
     const message = encodeURIComponent(whatsappText);
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+  };
+
+  const downloadImage = (imageUrl: string, filename: string) => {
+    const link = document.createElement('a');
+    link.href = imageUrl;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const generateAdImage = (adNumber: number) => {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    
+    // 9:16 aspect ratio (e.g., 1080x1920 for high quality)
+    canvas.width = 1080;
+    canvas.height = 1920;
+    
+    if (!ctx) return '';
+    
+    // Background gradient
+    const gradient = ctx.createLinearGradient(0, 0, 0, 1920);
+    gradient.addColorStop(0, '#1e40af'); // blue-800
+    gradient.addColorStop(0.5, '#059669'); // green-600
+    gradient.addColorStop(1, '#1e40af'); // blue-800
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, 1080, 1920);
+    
+    // Logo placeholder (white circle)
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(90, 80, 120, 120);
+    ctx.fillStyle = '#1e40af';
+    ctx.font = 'bold 24px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('JSA', 150, 150);
+    
+    // Company name
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 48px Arial';
+    ctx.textAlign = 'left';
+    ctx.fillText('Jiya Siya Associates', 90, 280);
+    
+    ctx.font = '32px Arial';
+    ctx.fillText('Tax & Finance Consultant', 90, 330);
+    
+    // Main heading based on ad number
+    const headings = [
+      'Expert Tax Solutions\nFor Your Business',
+      'Complete GST &\nIncome Tax Services',
+      '15 Years Experience\nTrusted by 500+ Clients'
+    ];
+    
+    ctx.font = 'bold 56px Arial';
+    ctx.textAlign = 'center';
+    const lines = headings[adNumber - 1].split('\n');
+    lines.forEach((line, index) => {
+      ctx.fillText(line, 540, 500 + (index * 70));
+    });
+    
+    // Services list
+    const servicesList = [
+      '✓ Income Tax Return Filing',
+      '✓ GST Registration',
+      '✓ Company Registration',
+      '✓ MSME Loans',
+      '✓ TDS Work',
+      '✓ Digital Signature',
+      '✓ Trade License',
+      '✓ Import Export Code'
+    ];
+    
+    ctx.font = '36px Arial';
+    ctx.textAlign = 'left';
+    servicesList.forEach((service, index) => {
+      const yPos = 720 + (index * 60);
+      ctx.fillText(service, 90, yPos);
+    });
+    
+    // Contact section background
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
+    ctx.fillRect(60, 1450, 960, 350);
+    
+    // Contact info
+    ctx.fillStyle = '#1e40af';
+    ctx.font = 'bold 48px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('Contact Us Today!', 540, 1520);
+    
+    // Phone icon placeholder and number
+    ctx.fillStyle = '#059669';
+    ctx.fillRect(200, 1580, 60, 60);
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 20px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('📞', 230, 1615);
+    
+    ctx.fillStyle = '#1e40af';
+    ctx.font = 'bold 44px Arial';
+    ctx.textAlign = 'left';
+    ctx.fillText('+91 72082 41591', 280, 1620);
+    
+    // WhatsApp message
+    ctx.font = '28px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('Message us on WhatsApp for quick assistance', 540, 1680);
+    
+    // Location
+    ctx.font = '24px Arial';
+    ctx.fillText('📍 Pune, Maharashtra', 540, 1720);
+    
+    // Call to action
+    ctx.fillStyle = '#059669';
+    ctx.fillRect(240, 1750, 600, 80);
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 32px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('Get Expert Tax Solutions Now!', 540, 1800);
+    
+    return canvas.toDataURL('image/jpeg', 0.9);
   };
 
   return (
@@ -332,6 +452,79 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Ads Dialog */}
+      <Dialog open={showAdsDialog} onOpenChange={setShowAdsDialog}>
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-blue-900 text-2xl">Advertisement Images</DialogTitle>
+            <p className="text-muted-foreground">Download these images for offline advertising and WhatsApp sharing (9:16 format)</p>
+          </DialogHeader>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+            {[1, 2, 3].map((adNum) => (
+              <div key={adNum} className="space-y-3">
+                <div className="bg-gradient-to-b from-blue-800 via-green-600 to-blue-800 p-6 rounded-lg text-white aspect-[9/16] flex flex-col justify-between text-center relative overflow-hidden">
+                  {/* Logo */}
+                  <div className="flex items-center justify-start mb-4">
+                    <div className="w-12 h-12 bg-white rounded flex items-center justify-center mr-3">
+                      <span className="text-blue-800 font-bold text-sm">JSA</span>
+                    </div>
+                    <div className="text-left">
+                      <h3 className="font-bold text-lg">Jiya Siya Associates</h3>
+                      <p className="text-sm opacity-90">Tax & Finance Consultant</p>
+                    </div>
+                  </div>
+                  
+                  {/* Main heading */}
+                  <div className="flex-1 flex items-center justify-center">
+                    <h2 className="text-2xl font-bold leading-tight">
+                      {adNum === 1 && "Expert Tax Solutions\nFor Your Business"}
+                      {adNum === 2 && "Complete GST &\nIncome Tax Services"}
+                      {adNum === 3 && "15 Years Experience\nTrusted by 500+ Clients"}
+                    </h2>
+                  </div>
+                  
+                  {/* Services */}
+                  <div className="text-left text-sm space-y-1 mb-4">
+                    <div className="grid grid-cols-1 gap-1">
+                      <span>✓ Income Tax Return</span>
+                      <span>✓ GST Registration</span>
+                      <span>✓ Company Registration</span>
+                      <span>✓ MSME Loans</span>
+                      <span>✓ Digital Signature</span>
+                      <span>✓ And More...</span>
+                    </div>
+                  </div>
+                  
+                  {/* Contact */}
+                  <div className="bg-white/95 text-blue-900 p-4 rounded-lg">
+                    <h4 className="font-bold text-lg mb-2">Contact Us Today!</h4>
+                    <div className="flex items-center justify-center mb-2">
+                      <Phone className="h-5 w-5 mr-2 text-green-600" />
+                      <span className="font-bold text-lg">+91 72082 41591</span>
+                    </div>
+                    <p className="text-sm">Message us on WhatsApp</p>
+                    <div className="bg-green-600 text-white px-4 py-2 rounded mt-3">
+                      <span className="text-sm font-semibold">Get Expert Solutions Now!</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <Button 
+                  onClick={() => {
+                    const imageUrl = generateAdImage(adNum);
+                    downloadImage(imageUrl, `JSA-Advertisement-${adNum}.jpg`);
+                  }}
+                  className="w-full bg-green-600 hover:bg-green-700 text-white"
+                >
+                  <Download className="mr-2 h-4 w-4" />
+                  Download Ad {adNum}
+                </Button>
+              </div>
+            ))}
+          </div>
+        </DialogContent>
+      </Dialog>
+
       {/* Contact/Footer Section */}
       <footer id="contact" className="bg-blue-900 text-white py-16">
         <div className="container mx-auto px-4">
@@ -363,6 +556,13 @@ const Index = () => {
                 <a href="#about" className="block hover:text-green-400 transition-colors">About Us</a>
                 <a href="#testimonials" className="block hover:text-green-400 transition-colors">Testimonials</a>
                 <a href="#contact" className="block hover:text-green-400 transition-colors">Contact</a>
+                <button 
+                  onClick={() => setShowAdsDialog(true)}
+                  className="block hover:text-green-400 transition-colors text-left"
+                >
+                  <Image className="inline-block mr-2 h-4 w-4" />
+                  Ads
+                </button>
               </div>
             </div>
             <div>
