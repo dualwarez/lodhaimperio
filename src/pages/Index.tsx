@@ -176,169 +176,208 @@ const Index = () => {
     
     if (!ctx) return '';
     
-    // Premium tax-related background with gradient and pattern
-    const gradient = ctx.createLinearGradient(0, 0, 1080, 1920);
-    gradient.addColorStop(0, '#1e3a8a'); // blue-900
-    gradient.addColorStop(0.3, '#1e40af'); // blue-800
-    gradient.addColorStop(0.6, '#059669'); // green-600
-    gradient.addColorStop(1, '#064e3b'); // green-800
-    ctx.fillStyle = gradient;
-    ctx.fillRect(0, 0, 1080, 1920);
-    
-    // Add subtle pattern overlay for premium look
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.03)';
-    for (let i = 0; i < 1080; i += 60) {
-      for (let j = 0; j < 1920; j += 60) {
-        ctx.fillRect(i, j, 30, 30);
-      }
+    // Different background designs for each ad
+    if (adNumber === 1) {
+      // Premium tax-related background with gradient
+      const gradient = ctx.createLinearGradient(0, 0, 1080, 1920);
+      gradient.addColorStop(0, '#1e3a8a'); // blue-900
+      gradient.addColorStop(0.5, '#1e40af'); // blue-800
+      gradient.addColorStop(1, '#059669'); // green-600
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, 1080, 1920);
+    } else if (adNumber === 2) {
+      // Professional white background with blue accents
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, 1080, 1920);
+      
+      // Blue header
+      ctx.fillStyle = '#1e3a8a';
+      ctx.fillRect(0, 0, 1080, 300);
+      
+      // Green footer
+      ctx.fillStyle = '#059669';
+      ctx.fillRect(0, 1620, 1080, 300);
+    } else {
+      // Corporate green to blue gradient
+      const gradient = ctx.createLinearGradient(0, 0, 1080, 1920);
+      gradient.addColorStop(0, '#059669'); // green-600
+      gradient.addColorStop(0.5, '#0d9488'); // teal-600
+      gradient.addColorStop(1, '#1e40af'); // blue-800
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, 1080, 1920);
     }
     
-    // Professional border
-    ctx.strokeStyle = '#ffffff';
+    // Professional border for all ads
+    ctx.strokeStyle = adNumber === 2 ? '#1e3a8a' : '#ffffff';
     ctx.lineWidth = 8;
     ctx.strokeRect(20, 20, 1040, 1880);
     
-    // Draw a circular background for logo
-    ctx.fillStyle = '#ffffff';
+    // Logo section - consistent across all ads
+    const logoY = adNumber === 2 ? 80 : 100;
+    ctx.fillStyle = adNumber === 2 ? '#ffffff' : '#ffffff';
     ctx.beginPath();
-    ctx.arc(150, 150, 80, 0, 2 * Math.PI);
+    ctx.arc(150, logoY + 50, 60, 0, 2 * Math.PI);
     ctx.fill();
     
-    // Logo placeholder (simplified to avoid Image constructor issues)
+    // JSA logo text
     ctx.fillStyle = '#1e40af';
-    ctx.font = 'bold 36px Arial';
-    ctx.textAlign = 'center';
-    ctx.fillText('JSA', 150, 165);
-    
-    // Company name with premium styling
-    ctx.fillStyle = '#ffffff';
-    ctx.font = 'bold 52px Arial';
-    ctx.textAlign = 'left';
-    ctx.fillText('Jiya Siya Associates', 90, 300);
-    
-    ctx.font = 'italic 36px Arial';
-    ctx.fillStyle = '#e5e7eb';
-    ctx.fillText('Premium Tax & Finance Consultant', 90, 350);
-    
-    // Experience badge
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
-    ctx.fillRect(700, 250, 300, 80);
-    ctx.fillStyle = '#059669';
     ctx.font = 'bold 28px Arial';
     ctx.textAlign = 'center';
-    ctx.fillText('15+ Years Experience', 850, 300);
+    ctx.fillText('JSA', 150, logoY + 60);
     
-    // Main heading based on ad number
-    const headings = [
-      'Expert Tax Solutions\nFor Your Business Success',
-      'Complete Financial\n& Compliance Services',
-      'Trusted by 500+ Clients\nAcross Maharashtra'
-    ];
+    // Company name
+    ctx.fillStyle = adNumber === 2 ? '#1e3a8a' : '#ffffff';
+    ctx.font = 'bold 48px Arial';
+    ctx.textAlign = 'left';
+    ctx.fillText('Jiya Siya Associates', 240, logoY + 40);
     
+    ctx.font = 'italic 32px Arial';
+    ctx.fillStyle = adNumber === 2 ? '#6b7280' : '#e5e7eb';
+    ctx.fillText('Tax & Finance Consultant', 240, logoY + 80);
+    
+    // Experience badge
+    const badgeColor = adNumber === 1 ? '#059669' : adNumber === 2 ? '#1e40af' : '#0d9488';
+    ctx.fillStyle = badgeColor;
+    ctx.fillRect(240, logoY + 100, 200, 50);
     ctx.fillStyle = '#ffffff';
-    ctx.font = 'bold 64px Arial';
+    ctx.font = 'bold 20px Arial';
     ctx.textAlign = 'center';
-    const lines = headings[adNumber - 1].split('\n');
-    lines.forEach((line, index) => {
-      ctx.fillText(line, 540, 520 + (index * 80));
-    });
+    ctx.fillText('15+ Years Experience', 340, logoY + 130);
     
-    // Services section with premium styling
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
-    ctx.fillRect(60, 680, 960, 600);
+    // Main heading - different for each ad
+    const headingY = logoY + 220;
+    ctx.fillStyle = adNumber === 2 ? '#1e3a8a' : '#ffffff';
+    ctx.font = 'bold 56px Arial';
+    ctx.textAlign = 'center';
     
+    if (adNumber === 1) {
+      ctx.fillText('Expert Tax Solutions', 540, headingY);
+      ctx.fillText('For Your Business', 540, headingY + 70);
+    } else if (adNumber === 2) {
+      ctx.fillText('Complete Financial', 540, headingY);
+      ctx.fillText('& Compliance Services', 540, headingY + 70);
+    } else {
+      ctx.fillText('Trusted by 500+ Clients', 540, headingY);
+      ctx.fillText('Across Maharashtra', 540, headingY + 70);
+    }
+    
+    // Services section
+    const servicesY = headingY + 160;
+    const boxColor = adNumber === 2 ? '#f8fafc' : 'rgba(255, 255, 255, 0.95)';
+    ctx.fillStyle = boxColor;
+    ctx.fillRect(60, servicesY, 960, 700);
+    
+    // Services title
     ctx.fillStyle = '#1e40af';
-    ctx.font = 'bold 44px Arial';
+    ctx.font = 'bold 40px Arial';
     ctx.textAlign = 'center';
-    ctx.fillText('Our Premium Services', 540, 740);
+    ctx.fillText('Our Premium Services', 540, servicesY + 60);
     
-    // Enhanced services list with more services
-    const servicesList = [
-      '✓ Income Tax Return Filing',
-      '✓ GST Registration & Compliance',
-      '✓ Company & LLP Registration',
-      '✓ MSME Loans & Funding',
-      '✓ TDS Work & Compliance',
-      '✓ Digital Signature Services',
-      '✓ Trade License & ROC Filing',
-      '✓ Import Export Code (IEC)',
-      '✓ Accounting & Auditing',
-      '✓ Investment Advisory',
-      '✓ ESI & PF Registration',
-      '✓ FSSAI & Other Licenses'
-    ];
+    // Different service lists for each ad
+    let servicesList: string[] = [];
+    if (adNumber === 1) {
+      servicesList = [
+        '✓ Income Tax Return Filing',
+        '✓ GST Registration & Returns',
+        '✓ Company Registration',
+        '✓ MSME Loans & Funding',
+        '✓ TDS Work & Compliance',
+        '✓ Digital Signature Services',
+        '✓ Trade License Registration',
+        '✓ Import Export Code (IEC)',
+        '✓ Accounting & Bookkeeping',
+        '✓ Investment Advisory',
+        '✓ ESI & PF Registration',
+        '✓ FSSAI Registration'
+      ];
+    } else if (adNumber === 2) {
+      servicesList = [
+        '✓ Professional Tax Consultation',
+        '✓ Business Registration Services',
+        '✓ Financial Planning & Advisory',
+        '✓ Statutory Compliance',
+        '✓ Audit & Assurance Services',
+        '✓ License & Permits',
+        '✓ ROC Compliance',
+        '✓ Trademark Registration',
+        '✓ Labour License Services',
+        '✓ Custom Duty Consultation',
+        '✓ Tax Optimization Strategies',
+        '✓ Corporate Legal Services'
+      ];
+    } else {
+      servicesList = [
+        '✓ Expert ITR Filing',
+        '✓ GST Solutions',
+        '✓ Business Setup Services',
+        '✓ Loan Assistance',
+        '✓ Digital Services',
+        '✓ Compliance Management',
+        '✓ Financial Consultation',
+        '✓ Registration Services',
+        '✓ Tax Planning',
+        '✓ Legal Documentation',
+        '✓ Advisory Services',
+        '✓ Business Growth Support'
+      ];
+    }
     
-    ctx.font = '32px Arial';
+    // Display services in two columns
+    ctx.font = '28px Arial';
     ctx.textAlign = 'left';
     ctx.fillStyle = '#1e40af';
     
-    // Display services in two columns
     servicesList.forEach((service, index) => {
-      const col = index % 2;
-      const row = Math.floor(index / 2);
-      const xPos = col === 0 ? 100 : 560;
-      const yPos = 790 + (row * 45);
-      if (yPos < 1260) {
+      if (index < 12) {
+        const col = index % 2;
+        const row = Math.floor(index / 2);
+        const xPos = col === 0 ? 100 : 560;
+        const yPos = servicesY + 120 + (row * 45);
         ctx.fillText(service, xPos, yPos);
       }
     });
     
-    // Contact section with premium styling
+    // Contact section
+    const contactY = servicesY + 720;
     ctx.fillStyle = '#1e40af';
-    ctx.fillRect(60, 1320, 960, 450);
+    ctx.fillRect(60, contactY, 960, 380);
     
     // Contact header
     ctx.fillStyle = '#ffffff';
-    ctx.font = 'bold 52px Arial';
+    ctx.font = 'bold 44px Arial';
     ctx.textAlign = 'center';
-    ctx.fillText('Contact Our Experts Today!', 540, 1390);
+    ctx.fillText('Contact Our Experts Today!', 540, contactY + 60);
     
-    // Phone numbers with icons
-    ctx.font = 'bold 48px Arial';
-    ctx.textAlign = 'left';
+    // Phone numbers with enhanced styling
+    ctx.font = 'bold 36px Arial';
+    ctx.textAlign = 'center';
     
     // First phone number
     ctx.fillStyle = '#10b981';
-    ctx.fillRect(180, 1430, 60, 60);
+    ctx.fillRect(200, contactY + 100, 680, 60);
     ctx.fillStyle = '#ffffff';
-    ctx.font = 'bold 24px Arial';
-    ctx.textAlign = 'center';
-    ctx.fillText('📞', 210, 1465);
-    
-    ctx.fillStyle = '#ffffff';
-    ctx.font = 'bold 42px Arial';
-    ctx.textAlign = 'left';
-    ctx.fillText('+91 72082 41591', 260, 1470);
+    ctx.fillText('📞 +91 72082 41591', 540, contactY + 140);
     
     // Second phone number
-    ctx.fillStyle = '#10b981';
-    ctx.fillRect(180, 1510, 60, 60);
+    ctx.fillStyle = '#059669';
+    ctx.fillRect(200, contactY + 180, 680, 60);
     ctx.fillStyle = '#ffffff';
-    ctx.font = 'bold 24px Arial';
-    ctx.textAlign = 'center';
-    ctx.fillText('📞', 210, 1545);
-    
-    ctx.fillStyle = '#ffffff';
-    ctx.font = 'bold 42px Arial';
-    ctx.textAlign = 'left';
-    ctx.fillText('+91 97029 77288', 260, 1550);
+    ctx.fillText('📞 +91 97029 77288', 540, contactY + 220);
     
     // WhatsApp message
-    ctx.font = '32px Arial';
-    ctx.textAlign = 'center';
-    ctx.fillText('Message us on WhatsApp for instant consultation', 540, 1620);
+    ctx.font = '28px Arial';
+    ctx.fillText('Message us on WhatsApp for instant consultation', 540, contactY + 280);
     
     // Location
-    ctx.font = '28px Arial';
-    ctx.fillText('📍 Pune, Maharashtra | Licensed Tax Consultant', 540, 1660);
+    ctx.font = '24px Arial';
+    ctx.fillText('📍 Pune, Maharashtra | Licensed Tax Consultant', 540, contactY + 320);
     
-    // Premium call to action
+    // Call to action
     ctx.fillStyle = '#10b981';
-    ctx.fillRect(190, 1700, 700, 90);
+    ctx.fillRect(140, contactY + 340, 800, 60);
     ctx.fillStyle = '#ffffff';
-    ctx.font = 'bold 36px Arial';
-    ctx.textAlign = 'center';
-    ctx.fillText('Get Professional Tax Solutions Today!', 540, 1760);
+    ctx.font = 'bold 32px Arial';
+    ctx.fillText('Get Professional Tax Solutions Today!', 540, contactY + 380);
     
     return canvas.toDataURL('image/jpeg', 0.9);
   };
