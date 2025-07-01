@@ -198,17 +198,13 @@ const Index = () => {
     ctx.lineWidth = 8;
     ctx.strokeRect(20, 20, 1040, 1880);
     
-    // Logo (using the uploaded JSA logo reference)
-    const logoImg = new Image();
-    logoImg.src = '/lovable-uploads/994acf8f-19b0-47db-ba8a-5c64ba9d152b.png';
-    
     // Draw a circular background for logo
     ctx.fillStyle = '#ffffff';
     ctx.beginPath();
     ctx.arc(150, 150, 80, 0, 2 * Math.PI);
     ctx.fill();
     
-    // Logo placeholder (will be replaced with actual logo)
+    // Logo placeholder (simplified to avoid Image constructor issues)
     ctx.fillStyle = '#1e40af';
     ctx.font = 'bold 36px Arial';
     ctx.textAlign = 'center';
