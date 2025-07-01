@@ -1,4 +1,4 @@
-import { Phone, MessageCircle, FileText, Building, CreditCard, Truck, Shield, Award, Users, Star, CheckCircle, Mail, MapPin, Calendar, ExternalLink, X, IndianRupee, Factory, Briefcase, Landmark, Download, Image } from "lucide-react";
+import { Phone, MessageCircle, FileText, Building, CreditCard, Truck, Shield, Award, Users, Star, CheckCircle, Mail, MapPin, Calendar, ExternalLink, X, IndianRupee, Factory, Briefcase, Landmark, Download, Image, Calculator, Globe, UserCheck, Banknote, FileCheck, ClipboardList } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
@@ -92,6 +92,48 @@ const Index = () => {
       description: "Trademark registration and protection",
       details: "Protect your brand with trademark registration. Our services include trademark search, application filing, response to objections, and renewal services to safeguard your intellectual property.",
       whatsappText: "I need to discuss about Trademark Services"
+    },
+    {
+      icon: Calculator,
+      title: "Accounting Services",
+      description: "Complete bookkeeping and accounting solutions",
+      details: "Professional accounting services including bookkeeping, financial statements preparation, ledger maintenance, and financial analysis for businesses of all sizes.",
+      whatsappText: "I need to discuss about Accounting Services"
+    },
+    {
+      icon: Globe,
+      title: "FSSAI Registration",
+      description: "Food safety and standards authority license",
+      details: "Get FSSAI registration for your food business. We handle the complete process from application to license approval, ensuring compliance with food safety regulations.",
+      whatsappText: "I need to discuss about FSSAI Registration"
+    },
+    {
+      icon: UserCheck,
+      title: "Auditing Services",
+      description: "Internal and statutory audit services",
+      details: "Comprehensive auditing services including statutory audits, internal audits, tax audits, and compliance audits to ensure your business meets all regulatory requirements.",
+      whatsappText: "I need to discuss about Auditing Services"
+    },
+    {
+      icon: Banknote,
+      title: "Investment Advisory",
+      description: "Financial planning and investment guidance",
+      details: "Expert investment advisory services including mutual funds, tax-saving investments, retirement planning, and wealth management solutions tailored to your financial goals.",
+      whatsappText: "I need to discuss about Investment Advisory"
+    },
+    {
+      icon: FileCheck,
+      title: "ESI & PF Registration",
+      description: "Employee State Insurance and Provident Fund",
+      details: "Complete ESI and PF registration services for employers, including monthly compliance, return filing, and employee benefit management for statutory compliance.",
+      whatsappText: "I need to discuss about ESI & PF Registration"
+    },
+    {
+      icon: ClipboardList,
+      title: "ROC Compliance",
+      description: "Registrar of Companies annual compliance",
+      details: "Ensure ROC compliance with annual return filing, board meeting compliance, maintaining statutory registers, and other MCA requirements for companies.",
+      whatsappText: "I need to discuss about ROC Compliance"
     }
   ];
 
@@ -134,103 +176,173 @@ const Index = () => {
     
     if (!ctx) return '';
     
-    // Background gradient
-    const gradient = ctx.createLinearGradient(0, 0, 0, 1920);
-    gradient.addColorStop(0, '#1e40af'); // blue-800
-    gradient.addColorStop(0.5, '#059669'); // green-600
-    gradient.addColorStop(1, '#1e40af'); // blue-800
+    // Premium tax-related background with gradient and pattern
+    const gradient = ctx.createLinearGradient(0, 0, 1080, 1920);
+    gradient.addColorStop(0, '#1e3a8a'); // blue-900
+    gradient.addColorStop(0.3, '#1e40af'); // blue-800
+    gradient.addColorStop(0.6, '#059669'); // green-600
+    gradient.addColorStop(1, '#064e3b'); // green-800
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, 1080, 1920);
     
-    // Logo placeholder (white circle)
+    // Add subtle pattern overlay for premium look
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.03)';
+    for (let i = 0; i < 1080; i += 60) {
+      for (let j = 0; j < 1920; j += 60) {
+        ctx.fillRect(i, j, 30, 30);
+      }
+    }
+    
+    // Professional border
+    ctx.strokeStyle = '#ffffff';
+    ctx.lineWidth = 8;
+    ctx.strokeRect(20, 20, 1040, 1880);
+    
+    // Logo (using the uploaded JSA logo reference)
+    const logoImg = new Image();
+    logoImg.src = '/lovable-uploads/994acf8f-19b0-47db-ba8a-5c64ba9d152b.png';
+    
+    // Draw a circular background for logo
     ctx.fillStyle = '#ffffff';
-    ctx.fillRect(90, 80, 120, 120);
+    ctx.beginPath();
+    ctx.arc(150, 150, 80, 0, 2 * Math.PI);
+    ctx.fill();
+    
+    // Logo placeholder (will be replaced with actual logo)
     ctx.fillStyle = '#1e40af';
-    ctx.font = 'bold 24px Arial';
+    ctx.font = 'bold 36px Arial';
     ctx.textAlign = 'center';
-    ctx.fillText('JSA', 150, 150);
+    ctx.fillText('JSA', 150, 165);
     
-    // Company name
+    // Company name with premium styling
     ctx.fillStyle = '#ffffff';
-    ctx.font = 'bold 48px Arial';
+    ctx.font = 'bold 52px Arial';
     ctx.textAlign = 'left';
-    ctx.fillText('Jiya Siya Associates', 90, 280);
+    ctx.fillText('Jiya Siya Associates', 90, 300);
     
-    ctx.font = '32px Arial';
-    ctx.fillText('Tax & Finance Consultant', 90, 330);
+    ctx.font = 'italic 36px Arial';
+    ctx.fillStyle = '#e5e7eb';
+    ctx.fillText('Premium Tax & Finance Consultant', 90, 350);
+    
+    // Experience badge
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
+    ctx.fillRect(700, 250, 300, 80);
+    ctx.fillStyle = '#059669';
+    ctx.font = 'bold 28px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('15+ Years Experience', 850, 300);
     
     // Main heading based on ad number
     const headings = [
-      'Expert Tax Solutions\nFor Your Business',
-      'Complete GST &\nIncome Tax Services',
-      '15 Years Experience\nTrusted by 500+ Clients'
+      'Expert Tax Solutions\nFor Your Business Success',
+      'Complete Financial\n& Compliance Services',
+      'Trusted by 500+ Clients\nAcross Maharashtra'
     ];
     
-    ctx.font = 'bold 56px Arial';
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 64px Arial';
     ctx.textAlign = 'center';
     const lines = headings[adNumber - 1].split('\n');
     lines.forEach((line, index) => {
-      ctx.fillText(line, 540, 500 + (index * 70));
+      ctx.fillText(line, 540, 520 + (index * 80));
     });
     
-    // Services list
-    const servicesList = [
-      '✓ Income Tax Return Filing',
-      '✓ GST Registration',
-      '✓ Company Registration',
-      '✓ MSME Loans',
-      '✓ TDS Work',
-      '✓ Digital Signature',
-      '✓ Trade License',
-      '✓ Import Export Code'
-    ];
-    
-    ctx.font = '36px Arial';
-    ctx.textAlign = 'left';
-    servicesList.forEach((service, index) => {
-      const yPos = 720 + (index * 60);
-      ctx.fillText(service, 90, yPos);
-    });
-    
-    // Contact section background
+    // Services section with premium styling
     ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
-    ctx.fillRect(60, 1450, 960, 350);
-    
-    // Contact info
-    ctx.fillStyle = '#1e40af';
-    ctx.font = 'bold 48px Arial';
-    ctx.textAlign = 'center';
-    ctx.fillText('Contact Us Today!', 540, 1520);
-    
-    // Phone icon placeholder and number
-    ctx.fillStyle = '#059669';
-    ctx.fillRect(200, 1580, 60, 60);
-    ctx.fillStyle = '#ffffff';
-    ctx.font = 'bold 20px Arial';
-    ctx.textAlign = 'center';
-    ctx.fillText('📞', 230, 1615);
+    ctx.fillRect(60, 680, 960, 600);
     
     ctx.fillStyle = '#1e40af';
     ctx.font = 'bold 44px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('Our Premium Services', 540, 740);
+    
+    // Enhanced services list with more services
+    const servicesList = [
+      '✓ Income Tax Return Filing',
+      '✓ GST Registration & Compliance',
+      '✓ Company & LLP Registration',
+      '✓ MSME Loans & Funding',
+      '✓ TDS Work & Compliance',
+      '✓ Digital Signature Services',
+      '✓ Trade License & ROC Filing',
+      '✓ Import Export Code (IEC)',
+      '✓ Accounting & Auditing',
+      '✓ Investment Advisory',
+      '✓ ESI & PF Registration',
+      '✓ FSSAI & Other Licenses'
+    ];
+    
+    ctx.font = '32px Arial';
     ctx.textAlign = 'left';
-    ctx.fillText('+91 72082 41591', 280, 1620);
+    ctx.fillStyle = '#1e40af';
+    
+    // Display services in two columns
+    servicesList.forEach((service, index) => {
+      const col = index % 2;
+      const row = Math.floor(index / 2);
+      const xPos = col === 0 ? 100 : 560;
+      const yPos = 790 + (row * 45);
+      if (yPos < 1260) {
+        ctx.fillText(service, xPos, yPos);
+      }
+    });
+    
+    // Contact section with premium styling
+    ctx.fillStyle = '#1e40af';
+    ctx.fillRect(60, 1320, 960, 450);
+    
+    // Contact header
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 52px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('Contact Our Experts Today!', 540, 1390);
+    
+    // Phone numbers with icons
+    ctx.font = 'bold 48px Arial';
+    ctx.textAlign = 'left';
+    
+    // First phone number
+    ctx.fillStyle = '#10b981';
+    ctx.fillRect(180, 1430, 60, 60);
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 24px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('📞', 210, 1465);
+    
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 42px Arial';
+    ctx.textAlign = 'left';
+    ctx.fillText('+91 72082 41591', 260, 1470);
+    
+    // Second phone number
+    ctx.fillStyle = '#10b981';
+    ctx.fillRect(180, 1510, 60, 60);
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 24px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('📞', 210, 1545);
+    
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 42px Arial';
+    ctx.textAlign = 'left';
+    ctx.fillText('+91 97029 77288', 260, 1550);
     
     // WhatsApp message
-    ctx.font = '28px Arial';
+    ctx.font = '32px Arial';
     ctx.textAlign = 'center';
-    ctx.fillText('Message us on WhatsApp for quick assistance', 540, 1680);
+    ctx.fillText('Message us on WhatsApp for instant consultation', 540, 1620);
     
     // Location
-    ctx.font = '24px Arial';
-    ctx.fillText('📍 Pune, Maharashtra', 540, 1720);
+    ctx.font = '28px Arial';
+    ctx.fillText('📍 Pune, Maharashtra | Licensed Tax Consultant', 540, 1660);
     
-    // Call to action
-    ctx.fillStyle = '#059669';
-    ctx.fillRect(240, 1750, 600, 80);
+    // Premium call to action
+    ctx.fillStyle = '#10b981';
+    ctx.fillRect(190, 1700, 700, 90);
     ctx.fillStyle = '#ffffff';
-    ctx.font = 'bold 32px Arial';
+    ctx.font = 'bold 36px Arial';
     ctx.textAlign = 'center';
-    ctx.fillText('Get Expert Tax Solutions Now!', 540, 1800);
+    ctx.fillText('Get Professional Tax Solutions Today!', 540, 1760);
     
     return canvas.toDataURL('image/jpeg', 0.9);
   };
@@ -309,9 +421,9 @@ const Index = () => {
       <section id="services" className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Our Services</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Our Comprehensive Services</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Comprehensive tax and finance solutions tailored to your needs
+              Professional tax and finance solutions tailored to your business needs
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -336,13 +448,29 @@ const Index = () => {
                   </DialogHeader>
                   <div className="space-y-4">
                     <p className="text-muted-foreground">{service.details}</p>
-                    <Button 
-                      onClick={() => handleEnquireNow(service.whatsappText)} 
-                      className="w-full bg-green-500 hover:bg-green-600 text-white"
-                    >
-                      <MessageCircle className="mr-2 h-4 w-4" />
-                      Enquire Now
-                    </Button>
+                    <div className="flex flex-col gap-2">
+                      <Button 
+                        onClick={() => handleEnquireNow(service.whatsappText)} 
+                        className="w-full bg-green-500 hover:bg-green-600 text-white"
+                      >
+                        <MessageCircle className="mr-2 h-4 w-4" />
+                        WhatsApp Enquiry
+                      </Button>
+                      <div className="flex gap-2">
+                        <a href="tel:+917208241591" className="flex-1">
+                          <Button variant="outline" className="w-full">
+                            <Phone className="mr-2 h-4 w-4" />
+                            Call Now
+                          </Button>
+                        </a>
+                        <a href="tel:+919702977288" className="flex-1">
+                          <Button variant="outline" className="w-full">
+                            <Phone className="mr-2 h-4 w-4" />
+                            Call Alt
+                          </Button>
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 </DialogContent>
               </Dialog>
@@ -454,57 +582,78 @@ const Index = () => {
 
       {/* Ads Dialog */}
       <Dialog open={showAdsDialog} onOpenChange={setShowAdsDialog}>
-        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle className="text-blue-900 text-2xl">Advertisement Images</DialogTitle>
-            <p className="text-muted-foreground">Download these images for offline advertising and WhatsApp sharing (9:16 format)</p>
+            <DialogTitle className="text-blue-900 text-2xl">Premium Advertisement Images</DialogTitle>
+            <p className="text-muted-foreground">Download these professional images for offline advertising and social media sharing (9:16 format)</p>
           </DialogHeader>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
             {[1, 2, 3].map((adNum) => (
               <div key={adNum} className="space-y-3">
-                <div className="bg-gradient-to-b from-blue-800 via-green-600 to-blue-800 p-6 rounded-lg text-white aspect-[9/16] flex flex-col justify-between text-center relative overflow-hidden">
-                  {/* Logo */}
-                  <div className="flex items-center justify-start mb-4">
-                    <div className="w-12 h-12 bg-white rounded flex items-center justify-center mr-3">
-                      <span className="text-blue-800 font-bold text-sm">JSA</span>
+                <div className="bg-gradient-to-b from-blue-900 via-blue-800 via-green-600 to-green-800 p-6 rounded-lg text-white aspect-[9/16] flex flex-col justify-between text-center relative overflow-hidden border-4 border-white">
+                  {/* Premium pattern overlay */}
+                  <div className="absolute inset-0 opacity-5">
+                    <div className="grid grid-cols-8 gap-2 h-full">
+                      {Array.from({length: 64}).map((_, i) => (
+                        <div key={i} className="bg-white rounded-sm"></div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {/* Logo with JSA branding */}
+                  <div className="relative z-10 flex items-center justify-start mb-4">
+                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mr-3 shadow-lg">
+                      <img src="/lovable-uploads/994acf8f-19b0-47db-ba8a-5c64ba9d152b.png" alt="JSA Logo" className="w-12 h-12 object-contain" />
                     </div>
                     <div className="text-left">
-                      <h3 className="font-bold text-lg">Jiya Siya Associates</h3>
-                      <p className="text-sm opacity-90">Tax & Finance Consultant</p>
+                      <h3 className="font-bold text-xl">Jiya Siya Associates</h3>
+                      <p className="text-sm opacity-90 italic">Premium Tax & Finance Consultant</p>
+                      <div className="bg-white text-green-600 px-2 py-1 rounded text-xs font-bold mt-1">
+                        15+ Years Experience
+                      </div>
                     </div>
                   </div>
                   
                   {/* Main heading */}
-                  <div className="flex-1 flex items-center justify-center">
+                  <div className="relative z-10 flex-1 flex items-center justify-center">
                     <h2 className="text-2xl font-bold leading-tight">
-                      {adNum === 1 && "Expert Tax Solutions\nFor Your Business"}
-                      {adNum === 2 && "Complete GST &\nIncome Tax Services"}
-                      {adNum === 3 && "15 Years Experience\nTrusted by 500+ Clients"}
+                      {adNum === 1 && "Expert Tax Solutions\nFor Your Business Success"}
+                      {adNum === 2 && "Complete Financial\n& Compliance Services"}
+                      {adNum === 3 && "Trusted by 500+ Clients\nAcross Maharashtra"}
                     </h2>
                   </div>
                   
-                  {/* Services */}
-                  <div className="text-left text-sm space-y-1 mb-4">
-                    <div className="grid grid-cols-1 gap-1">
+                  {/* Services in premium box */}
+                  <div className="relative z-10 bg-white/95 text-blue-900 p-4 rounded-lg mb-4">
+                    <h4 className="font-bold text-sm mb-2">Our Premium Services:</h4>
+                    <div className="text-xs space-y-1 grid grid-cols-2 gap-x-2">
                       <span>✓ Income Tax Return</span>
                       <span>✓ GST Registration</span>
                       <span>✓ Company Registration</span>
                       <span>✓ MSME Loans</span>
                       <span>✓ Digital Signature</span>
-                      <span>✓ And More...</span>
+                      <span>✓ Accounting Services</span>
+                      <span>✓ Investment Advisory</span>
+                      <span>✓ ROC Compliance</span>
                     </div>
                   </div>
                   
-                  {/* Contact */}
-                  <div className="bg-white/95 text-blue-900 p-4 rounded-lg">
-                    <h4 className="font-bold text-lg mb-2">Contact Us Today!</h4>
-                    <div className="flex items-center justify-center mb-2">
-                      <Phone className="h-5 w-5 mr-2 text-green-600" />
-                      <span className="font-bold text-lg">+91 72082 41591</span>
+                  {/* Contact with both numbers */}
+                  <div className="relative z-10 bg-blue-900/95 text-white p-4 rounded-lg border-2 border-white">
+                    <h4 className="font-bold text-lg mb-3">Contact Our Experts!</h4>
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-center">
+                        <Phone className="h-4 w-4 mr-2 text-green-400" />
+                        <span className="font-bold text-sm">+91 72082 41591</span>
+                      </div>
+                      <div className="flex items-center justify-center">
+                        <Phone className="h-4 w-4 mr-2 text-green-400" />
+                        <span className="font-bold text-sm">+91 97029 77288</span>
+                      </div>
                     </div>
-                    <p className="text-sm">Message us on WhatsApp</p>
-                    <div className="bg-green-600 text-white px-4 py-2 rounded mt-3">
-                      <span className="text-sm font-semibold">Get Expert Solutions Now!</span>
+                    <p className="text-xs mt-2 opacity-90">WhatsApp Available | Pune, Maharashtra</p>
+                    <div className="bg-green-600 text-white px-3 py-2 rounded mt-3">
+                      <span className="text-sm font-semibold">Get Professional Solutions Now!</span>
                     </div>
                   </div>
                 </div>
@@ -512,12 +661,12 @@ const Index = () => {
                 <Button 
                   onClick={() => {
                     const imageUrl = generateAdImage(adNum);
-                    downloadImage(imageUrl, `JSA-Advertisement-${adNum}.jpg`);
+                    downloadImage(imageUrl, `JSA-Premium-Ad-${adNum}.jpg`);
                   }}
-                  className="w-full bg-green-600 hover:bg-green-700 text-white"
+                  className="w-full bg-gradient-to-r from-blue-600 to-green-600 hover:from-blue-700 hover:to-green-700 text-white"
                 >
                   <Download className="mr-2 h-4 w-4" />
-                  Download Ad {adNum}
+                  Download Premium Ad {adNum}
                 </Button>
               </div>
             ))}
@@ -535,6 +684,10 @@ const Index = () => {
                 <div className="flex items-center">
                   <Phone className="h-5 w-5 mr-3 text-green-400" />
                   <span>+91 72082 41591</span>
+                </div>
+                <div className="flex items-center">
+                  <Phone className="h-5 w-5 mr-3 text-green-400" />
+                  <span>+91 97029 77288</span>
                 </div>
                 <div className="flex items-center">
                   <Mail className="h-5 w-5 mr-3 text-green-400" />
